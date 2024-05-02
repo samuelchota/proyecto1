@@ -1,0 +1,16 @@
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 100%;
+}
+.logo{
+  height: 130px;
+  margin-top: 20vh;
+}
+.body{
+  max-width: 300px;
+  width: 100%;
+  text-align: center;
+}

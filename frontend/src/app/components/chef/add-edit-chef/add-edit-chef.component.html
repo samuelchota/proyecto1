@@ -1,0 +1,40 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="row mt-1">
+    <div class="col-lg-4 offset-lg-4">
+        <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
+            <div class="card-header text-center">{{ operacion }} Chef</div>
+            <div class="card-body">
+                <form [formGroup]="form" (ngSubmit)="addChef()">
+                    <input formControlName="nombre" type="text" class="form-control" placeholder="Ingrese el nombre">
+                    <span *ngIf="form.get('nombre')?.hasError('required') && form.get('nombre')?.touched">
+                        El campo nombre es <strong>requerido</strong>
+                    </span>
+                    <input formControlName="apellido" type="text" class="form-control mt-2" placeholder="Ingrese el apellido">
+                    <span *ngIf="form.get('apellido')?.hasError('required') && form.get('apellido')?.touched">
+                        El campo apellido es <strong>requerido</strong>
+                    </span>
+                    <input formControlName="telefono" type="text" class="form-control mt-2" placeholder="Ingrese el teléfono" (input)="validarTelefono($event)"  maxlength="9" minlength="9">
+                    <span *ngIf="form.get('telefono')?.hasError('required') && form.get('telefono')?.touched">
+                      El campo apellido es <strong>requerido</strong>
+                    </span>
+                    <input formControlName="dni" type="text" class="form-control mt-2" placeholder="Ingrese el número de DNI" (input)="validarDNI($event)"  maxlength="8" minlength="8">
+                    <span *ngIf="form.get('dni')?.hasError('required') && form.get('dni')?.touched">
+                    El campo DNI es <strong>requerido</strong>
+                    </span>
+                    <input formControlName="email" type="email" class="form-control mt-2" placeholder="Ingrese el email">
+                    <span *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">
+                        El campo email es <strong>requerido</strong>
+                    </span>
+                    <div class="row mt-2 text-center">
+                        <div class="col-lg-6">
+                            <button routerLink="/chefs" type="button" class="btn btn-secondary">Volver</button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Aceptar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
